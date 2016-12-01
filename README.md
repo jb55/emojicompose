@@ -5,5 +5,5 @@
 
 ## Usage
 
-    node index.js >> ~/.XCompose
+    node index.js [max-word-length] >> ~/.XCompose
 

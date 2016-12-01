@@ -1,5 +1,6 @@
 
 var emojis = require('./emoji.json')
+var maxLen = +process.argv[2] || 6;
 
 function e2u(str){
     str = str.replace(/\ufe0f|\u200d/gm, ''); // strips unicode variation selector and zero-width joiner
@@ -32,7 +33,7 @@ emojis.forEach(function (x) {
   var word = x.aliases[0];
   var words = [].filter.call(word, (x) => x != "_")
                 .map((x) => "<" + safeChar(x) + ">")
-  if (words.length >= 8)
+  if (words.length > maxLen)
     return;
   var desc = word == x.description ? "" : x.description
   console.log("<Multi_key> %s : \"%s\" %s # \"%s\" %s"
