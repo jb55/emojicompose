@@ -9276,8 +9276,7 @@
   , "description": "envelope"
   , "category": "Objects"
   , "aliases": [
-      "email"
-    , "envelope"
+      "envelope"
     ]
   , "tags": [
       "letter"
@@ -9314,7 +9313,7 @@
   , "description": "e-mail"
   , "category": "Objects"
   , "aliases": [
-      "e-mail"
+      "email"
     ]
   , "tags": [
     ]

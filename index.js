@@ -27,13 +27,21 @@ function safeChar(c) {
   return c;
 }
 
+var used = {};
+function isntUsed(alias) {
+  return used[alias] !== 1;
+}
+
 emojis.forEach(function (x) {
   if (!x.emoji) return;
   var codepoint = "U"+e2u(x.emoji);
-  var word = x.aliases[0];
+  var word = x.aliases.find(isntUsed);
+  if (word == null) 
+    throw Error("could not find unambiguous alias for: " + x.description)
+  used[word] = 1;
   var words = [].filter.call(word, (x) => x != "_")
                 .map((x) => "<" + safeChar(x) + ">")
-  if (words.length > maxLen)
+  if (words.length > maxLen || codepoint.indexOf("-") != -1)
     return;
   var desc = word == x.description ? "" : x.description
   console.log("<Multi_key> %s : \"%s\" %s # \"%s\" %s"
